@@ -64,7 +64,7 @@ public class EnemyMove : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "RW")
+        if (col.gameObject.name == "RW" ||  col.gameObject.name == "Door")
         {
             // print("Wall");
 
