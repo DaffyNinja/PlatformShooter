@@ -11,39 +11,43 @@ public class PointCount : MonoBehaviour
 
     EnemySpawn eSpawn;
 
-   // EnemyMove eMove;
 
-   // GameObject[] enOBJ;
-
-    private GameObject Door1;
+    public bool wonRound = false;
 
 
     // Use this for initialization
     void Start()
     {
-        eSpawn = this.gameObject.GetComponent<EnemySpawn>();
-
-        Door1 = GameObject.Find("Door");
+        //eSpawn = this.gameObject.GetComponent<EnemySpawn>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        //if (Points == 3)
+        //{
+        //    enemyPointText.text = "Open";
+
+
+        //}
+
         if (Points <= 19)
         {
-
             enemyPointText.text = Points.ToString();
         }
-        else if (Points >= 20)
-        {
-            //WIN
+        //else if (Points >= 20)
+        //{
+        //    enemyPointText.text = "Door";
 
-            eSpawn.canSpawn = false;
+        //    eSpawn.enabled = false;
+        //}
 
-            Door1.SetActive(false);
-           
-            enemyPointText.text = "Door";
+        //if (Points >= 30)
+        //{
+        //    print("NEW WIN!!!");
 
-        }
+        //}
+
     }
 }

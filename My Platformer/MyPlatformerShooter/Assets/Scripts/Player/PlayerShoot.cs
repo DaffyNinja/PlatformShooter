@@ -22,13 +22,12 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.GetKey(KeyCode.RightControl))
+        if (Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl))
         {
             Instantiate(bulletOBj, new Vector3(bulletShot.transform.position.x, bulletShot.transform.position.y, bulletShot.transform.position.z), transform.rotation);
 
            // bulletOBj.GetComponent<Rigidbody2D>().velocity = transform.forward * bulletSpeed;
 
-            
         }
 	
 	}

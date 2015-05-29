@@ -9,16 +9,17 @@ public class PlayerMove : MonoBehaviour
 
     public float jumpSpeed;
 
+
     public LayerMask groundMask;
 
     public float jumpDistance;
 
-    public bool canJump;
+    bool canJump;
 
 
-    public float fMove;
+    float fMove;
 
-    public bool isFacingRight = true;
+    bool isFacingRight = true;
 
 
     public bool isRight;
@@ -141,7 +142,7 @@ public class PlayerMove : MonoBehaviour
 
         if (col.gameObject.tag == "Enemy")
         {
-            print("Enemy");
+            //print("Enemy");
 
             health--;
 

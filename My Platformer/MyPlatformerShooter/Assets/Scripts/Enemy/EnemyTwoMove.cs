@@ -1,19 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyTwoMove : MonoBehaviour
 {
 
     public float enemySpeed;
+
 
     bool moveRight;
 
     bool moveLeft;
 
+
+    float fMove;
+
+    bool isFacingRight = true;
+
+
     bool startMove = true;
 
 
-  // public int enemyPoint;
+    // public int enemyPoint;
 
     //bool addPoint;
 
@@ -33,7 +40,7 @@ public class EnemyMove : MonoBehaviour
         PointC = GameObject.Find("Game Master").GetComponent<PointCount>();
     }
 
-   
+
     void FixedUpdate()
     {
 
@@ -60,6 +67,25 @@ public class EnemyMove : MonoBehaviour
         //}
 
         //print(enemyPoint.ToString());
+
+        if (fMove > 0 && isFacingRight)
+        {
+            Flip();
+        }
+        else if (fMove < 0 && !isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+
+
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -67,6 +93,8 @@ public class EnemyMove : MonoBehaviour
         if (col.gameObject.name == "RW")
         {
             //print("Door");
+
+            fMove = 1;
 
             startMove = false;
 
@@ -79,6 +107,8 @@ public class EnemyMove : MonoBehaviour
         {
             //print("Door");
 
+            fMove = 1;
+
             startMove = false;
 
             moveLeft = true;
@@ -88,7 +118,9 @@ public class EnemyMove : MonoBehaviour
 
         if (col.gameObject.tag == "Left Door")
         {
-           // print("Door");
+            // print("Door");
+
+            fMove = -1;
 
             startMove = false;
 
@@ -101,6 +133,8 @@ public class EnemyMove : MonoBehaviour
         if (col.gameObject.name == "LW")
         {
             //print("Wall");
+
+            fMove = -1;
 
             startMove = false;
 

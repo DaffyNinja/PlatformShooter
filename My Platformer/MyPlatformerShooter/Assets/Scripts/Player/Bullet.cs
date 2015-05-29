@@ -60,4 +60,26 @@ public class Bullet : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        //print("Hit");
+
+        if (col.gameObject.tag == "Door")
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (col.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (col.gameObject.tag == "Ground")
+        {
+            Destroy(this.gameObject);
+        }
+
+        
+    }
+
 }
