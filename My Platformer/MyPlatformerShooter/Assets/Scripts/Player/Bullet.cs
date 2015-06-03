@@ -19,10 +19,19 @@ public class Bullet : MonoBehaviour
     Vector3 pos;
 
 
+    GameObject bulletParent;
+
+
     // Use this for initialization
     void Start()
     {
+        bulletParent = GameObject.Find("Bullets Parent");
+
+        this.gameObject.transform.parent = bulletParent.transform;
+
+
         playerM = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
+
 
         velo = new Vector3(bulletSpeed * Time.deltaTime, 0, 0);
 

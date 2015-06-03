@@ -31,11 +31,15 @@ public class PlayerMove : MonoBehaviour
 
     public Slider helthBar;
 
+    private Rigidbody2D myRigidbody2D;
+
 
     // Use this for initialization
     void Start()
     {
-        isRight = true;
+        //isRight = true;
+
+        myRigidbody2D = GetComponent<Rigidbody2D>();
 
     }
 
@@ -61,7 +65,9 @@ public class PlayerMove : MonoBehaviour
         {
             fMove = -1;
 
-            transform.Translate(moveSpeed, 0, 0 * Time.fixedDeltaTime);
+            //transform.Translate(moveSpeed, 0, 0 * Time.fixedDeltaTime);
+
+            myRigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, myRigidbody2D.velocity.y);
 
 
             isRight = true;
@@ -72,7 +78,9 @@ public class PlayerMove : MonoBehaviour
         {
             fMove = 1;
 
-            transform.Translate(-moveSpeed, 0, 0 * Time.fixedDeltaTime);
+            //transform.Translate(-moveSpeed, 0, 0 * Time.fixedDeltaTime);
+
+            myRigidbody2D.velocity = new Vector2(-Input.GetAxis("Horizontal") * -moveSpeed, myRigidbody2D.velocity.y);
 
 
             isLeft = true;
@@ -90,7 +98,9 @@ public class PlayerMove : MonoBehaviour
 
                 jumpDistance = 0;
 
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpSpeed * Time.deltaTime));
+               // GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpSpeed * Time.deltaTime));
+
+                myRigidbody2D.AddForce(new Vector2(0, jumpSpeed));
             }
         }
 
